@@ -15,8 +15,8 @@
 
    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5),
                0 6px 20px 0 rgba(0,0,0,0.39);
-   background: lightpink;
-   margin-bottom : 5%;
+   background: white;
+   margin-bottom : 2%;
    border-radius: 25px;
    padding : 2%;
    overflow: auto;
@@ -31,7 +31,7 @@
 
     text-align: center;
     padding: 3%;
-    background: pink;
+    background: white;
     border-radius: 25px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4),
                 0 6px 20px 0 rgba(0,0,0,0.36);
@@ -50,24 +50,17 @@
   {% endfor %}
   {% endif %}
 
-  <center class="row">
-    <h1><i>__TODO LIST__</i></h1>
-    <hr />
+  <center class="jumbotron text-center">
+    <h1> Project Management </h1>
   </center>
 
   <div class="row">
 
-    <div class="col-md-8">
+    <div class="col-md-4">
 
       {% for i in list %}
       <div class="card">
-        <center><b>{{i.title}}</b></center>
-        <hr/>
-        {{i.date}}
-        <hr/>
-        {{i.details}}
-        <br />
-        <br />
+        <b>{{i.title}}</b> - {{i.details}} - {{i.date}} - {{i.category}}
         <form action="/del/{{i.id}}" method="POST" style=" padding-right: 4%; padding-bottom: 3%;">
           {% csrf_token %}
           <button value="remove" type="submit"  class="btn btn-primary" style="float: right;"><span class="glyphicon glyphicon-trash"></span> &nbsp; remove</button>
@@ -75,18 +68,19 @@
       </div>
       {% endfor%}
     </div>
-    <div class="col-md-1"> </div>
-    <div class="col-md-3" >
+
+    <div class="col-md-4" >
       <div  class="submit_form">
       <form  method="POST">
         {% csrf_token %}
-        {{forms}}
+         {{forms}}
         <center>
         <input type="submit" class="btn btn-default" value="submit" />
       </center>
       </form>
+      </div>
     </div>
-  </div>
+    <div class="col-md-4"> </div>
 </div>
 </body>
 
